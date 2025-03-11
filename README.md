@@ -88,6 +88,7 @@ POST /doctors
 
 ```json
 {
+  "username": "johndoe",
   "first_name": "John",
   "last_name": "Doe",
   "email": "john@example.com"
@@ -104,9 +105,10 @@ POST /doctors/:doctorId/slots
 
 ```json
 {
-  "start_time": "2025-03-15T09:00:00Z",
-  "end_time": "2025-03-15T12:00:00Z",
-  "recurrence": "daily"
+  "start_time": "2025-03-12T09:00:00Z",
+  "end_time": "2025-03-20T12:00:00Z",
+  "recurrence": "daily",                  // 'daily' | 'weekly' | 'monthly'
+  "repeat_until": "2025-03-16T12:00:00Z"  // Optional
 }
 ```
 
@@ -134,6 +136,12 @@ POST /slots/:slotId/book
 
 ```http
 GET /doctors/:doctorId/bookings?start_date=2025-03-15&end_date=2025-03-20
+```
+
+#### Get Available Slots
+
+```http
+GET /doctors/:doctorId/available_slots?date=2025-03-25
 ```
 
 ## Testing
